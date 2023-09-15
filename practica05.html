@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practica 05</title>
+</head>
+<body>
+    <style>
+        img {
+            box-shadow: 5px 10px 10px red;
+            border-radius: 10% 40% 30%;
+        }
+
+        figure{
+            text-align: center;
+            display: inline-block;
+            width: 300px;
+        }
+
+        img.redonda{
+            border-radius: 50%;
+        }
+    </style>
+    
+    <h1>Radom Picture</h1>
+    <div id="app"></div>
+    <!--<figure>
+        <img src="https://picsum.photos/id/1/200/200" alt="">
+        <figcaption>John</figcaption>
+    </figure>
+    <figure>
+        <img src="https://picsum.photos/id/2/200/200" alt="">
+        <figcaption>Jane</figcaption>
+    </figure> -->
+    <script>
+        const api = document.getElementById("app");
+        const url = "https://picsum.photos/id/";
+        const size = "/200/200"
+        const picture = (parametro) => {
+            const src = url+parametro.id+size
+
+            return `
+                <figure>
+                    <img src="${src}">
+                    <figcaption>${parametro.nombre}</figcaption>
+            </figure>
+        `
+        } 
+        app.innerHTML = picture({id:1, nombre:"John"})
+        app.innerHTML += picture({id:"2", nombre:"Jane"})
+        app.innerHTML += picture({id:"3", nombre:"Joane"})
+
+        const lista = document.querySelectorAll("img")
+        for (let i = 0; i < lista.length; i++) {
+            lista[i].addEvenListener("click", ()=> {
+              //  lista[i]style.classList.bo ="50%"
+              lista[i].classList.toggle("redonda")
+            });
+        }  
+        </script>
+</body>
+</html>
